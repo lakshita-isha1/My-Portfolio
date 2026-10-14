@@ -1,0 +1,368 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Lakshita Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* Layout: sticky identity rail on the left, a ruled ledger of experience on the right; stacks to one column on phones. */
+:root {
+  --bg: #FBF8EC;
+  --surface: #FFFFFF;
+  --fg: #231D0E;
+  --muted: #6A614A;
+  --rule: #E3DAB9;
+  --accent: #8A6400;
+  --accent-fill: #E0A82A;
+  --on-fill: #231D0E;
+  --accent-soft: #F9EDB8;
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #17140B; --surface: #211C0F; --fg: #F2EDDC; --muted: #AFA489;
+    --rule: #3B3320; --accent: #E6B93C; --accent-fill: #E6B93C; --on-fill: #17140B;
+    --accent-soft: #3A2F0F; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #17140B; --surface: #211C0F; --fg: #F2EDDC; --muted: #AFA489;
+  --rule: #3B3320; --accent: #E6B93C; --accent-fill: #E6B93C; --on-fill: #17140B;
+  --accent-soft: #3A2F0F; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 72px;
+  align-items: start;
+}
+
+/* Rail */
+.rail { position: sticky; top: 40px; display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+.monogram {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent-fill); color: var(--on-fill);
+  font-family: var(--font-display); font-size: 30px; line-height: 1;
+}
+.name { font-family: var(--font-display); font-size: 46px; line-height: 1.02; font-weight: 400; margin: 0; letter-spacing: -0.01em; }
+.role { margin: 10px 0 0; color: var(--muted); font-size: 15px; }
+.nav { display: flex; flex-direction: column; gap: 2px; border-top: 1px solid var(--rule); padding-top: 18px; }
+.nav a {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none; padding: 5px 0;
+}
+.nav a:hover { color: var(--accent); }
+.contact { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--rule); padding-top: 18px; font-size: 14px; }
+.contact .label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; }
+.contact .val { overflow-wrap: anywhere; user-select: all; }
+.theme-btn {
+  align-self: flex-start; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  background: none; color: var(--muted); border: 1px solid var(--rule); border-radius: 999px; padding: 6px 14px; cursor: pointer;
+}
+.theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Main */
+main { display: flex; flex-direction: column; gap: 80px; min-width: 0; }
+.intro h2 {
+  font-family: var(--font-display); font-weight: 400; font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 24px; text-wrap: balance; max-width: 20ch;
+}
+.intro h2 em { color: var(--accent); font-style: italic; }
+.intro p { max-width: 62ch; margin: 0 0 14px; color: var(--muted); font-size: 17px; }
+.status {
+  display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); background: var(--accent-soft); padding: 6px 12px; border-radius: 999px;
+}
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-fill); }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; margin-top: 36px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.fact { padding: 18px 20px 18px 0; min-width: 0; }
+.fact + .fact { padding-left: 20px; border-left: 1px solid var(--rule); }
+.fact b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 34px; line-height: 1.1; }
+.fact span { font-size: 13px; color: var(--muted); line-height: 1.4; display: block; margin-top: 4px; }
+
+section { min-width: 0; }
+.sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 8px; }
+.sec-head h3 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0; }
+.sec-head::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+/* Experience ledger */
+.entry { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 32px; padding: 32px 0; border-bottom: 1px solid var(--rule); }
+.entry:last-child { border-bottom: 0; }
+.when { font-family: var(--font-mono); font-size: 12px; line-height: 1.7; color: var(--muted); letter-spacing: 0.02em; }
+.when strong { display: block; color: var(--fg); font-weight: 500; font-size: 13px; }
+.entry h4 { font-family: var(--font-display); font-weight: 400; font-size: 28px; line-height: 1.15; margin: 0 0 4px; }
+.org { color: var(--muted); font-size: 15px; margin: 0 0 16px; }
+.entry ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.entry li { position: relative; padding-left: 20px; max-width: 66ch; }
+.entry li::before { content: ""; position: absolute; left: 0; top: 0.78em; width: 9px; height: 1px; background: var(--accent); }
+.entry.quiet h4 { font-size: 22px; color: var(--muted); }
+.entry.quiet { padding-block: 24px; }
+
+/* Lifecycle */
+.lifecycle { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--rule); background: var(--surface); }
+.lifecycle li { padding: 16px 14px; font-size: 14px; border-left: 1px solid var(--rule); min-width: 0; }
+.lifecycle li:first-child { border-left: 0; }
+.lifecycle small { display: block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+.lc-note { color: var(--muted); font-size: 14px; margin: 14px 0 0; max-width: 62ch; }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 48px; margin-top: 24px; }
+.skills h4 { font-size: 15px; font-weight: 600; margin: 0 0 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.chips li { font-size: 13.5px; padding: 4px 12px; border: 1px solid var(--rule); border-radius: 999px; background: var(--surface); }
+
+/* Education */
+.edu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 48px; margin-top: 24px; }
+.edu h4 { font-family: var(--font-display); font-weight: 400; font-size: 24px; line-height: 1.2; margin: 0 0 4px; }
+.edu p { margin: 0; color: var(--muted); font-size: 15px; }
+.certs { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; }
+.certs li { padding: 10px 0; border-top: 1px solid var(--rule); font-size: 15px; }
+.certs li:last-child { border-bottom: 1px solid var(--rule); }
+
+.foot { color: var(--muted); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; border-top: 1px solid var(--rule); padding-top: 20px; }
+
+@media (max-width: 920px) {
+  .wrap { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  .rail { position: static; gap: 22px; }
+  .name { font-size: 44px; }
+  .nav { flex-direction: row; flex-wrap: wrap; gap: 4px 20px; }
+  .lifecycle { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lifecycle li:nth-child(4) { border-left: 0; }
+  .lifecycle li:nth-child(n+4) { border-top: 1px solid var(--rule); }
+}
+@media (max-width: 620px) {
+  body { padding-top: 28px; }
+  main { gap: 60px; }
+  .entry { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .skills, .edu { grid-template-columns: minmax(0, 1fr); }
+  .lifecycle { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lifecycle li { border-left: 0; border-top: 1px solid var(--rule); }
+  .lifecycle li:nth-child(odd) { border-right: 1px solid var(--rule); }
+  .lifecycle li:nth-child(-n+2) { border-top: 0; }
+  .fact, .fact + .fact { padding: 14px 12px 14px 0; border-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+
+<div class="wrap">
+  <aside class="rail">
+    <div class="monogram" aria-hidden="true">L</div>
+    <div>
+      <h1 class="name">Lakshita</h1>
+      <p class="role">Business Analyst and technology professional, Chennai</p>
+    </div>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#approach">Delivery</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+    </nav>
+    <div class="contact">
+      <div><span class="label">Email</span><span class="val">lakshita.isha1@gmail.com</span></div>
+      <div><span class="label">Phone</span><span class="val">+91 9445660020</span></div>
+      <div><span class="label">LinkedIn</span><a href="https://linkedin.com/in/lakshitad" rel="noopener">linkedin.com/in/lakshitad</a></div>
+    </div>
+    <button class="theme-btn" id="themeBtn" type="button">Switch theme</button>
+  </aside>
+
+  <main>
+    <section class="intro" id="about">
+      <div class="status">Open to business analyst and technology roles</div>
+      <h2>I have built the software, and I have <em>run the process</em> around it.</h2>
+      <p>I am a Business Analyst with a software development background from Deloitte Ireland. I gather requirements, map how work happens today, design how it should happen, and stay with the change through testing, release, training and adoption.</p>
+      <p>More recently I spent four years as a full-time volunteer at Isha Foundation, leading process improvement and automation for a web and mobile platform that moved the volunteer lifecycle online. I am now returning to the professional workforce with both sides of the work: the technical foundation and the user-centred view of how people adopt it.</p>
+      <div class="facts">
+        <div class="fact"><b>3 years</b><span>Java and Spring delivery at Deloitte Ireland</span></div>
+        <div class="fact"><b>4 years</b><span>Digital transformation and operations at Isha Foundation</span></div>
+        <div class="fact"><b>40%</b><span>Fewer recurring support tickets through troubleshooting guides</span></div>
+        <div class="fact"><b>5</b><span>Certifications in testing, business analysis and Python</span></div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="sec-head"><h3>Experience</h3></div>
+
+      <article class="entry">
+        <div class="when"><strong>Jun 2022 – Aug 2026</strong>Coimbatore, India</div>
+        <div>
+          <h4>Full-time Volunteer</h4>
+          <p class="org">Isha Foundation</p>
+          <ul>
+            <li>Contributed to the digital transformation of the volunteer lifecycle through a web-based application platform and a dedicated mobile application for selected volunteers.</li>
+            <li>Led requirements gathering, process improvement and automation initiatives, working with IT teams on implementation, testing, troubleshooting and timely delivery.</li>
+            <li>Prepared AS-IS process documentation, supported release demonstrations and user training, and coordinated volunteer teams so the application was adopted smoothly.</li>
+            <li>Managed recruitment and interviews end to end, along with employee exits, attendance and coordination of salary-related activities with the HR team.</li>
+            <li>Coordinated cross-functional teams, volunteers and stakeholders across multiple locations to keep technology-enabled operations on schedule.</li>
+            <li>Trained and conducted Kailasha Vadhyam sessions in Chennai, Coimbatore, Bengaluru, Hyderabad, Mangaluru and other locations across South India, including online sessions, and coordinated these offerings with the team.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry quiet">
+        <div class="when"><strong>Sept 2020 – Jun 2022</strong></div>
+        <div>
+          <h4>Family Caregiving</h4>
+          <ul><li>Took time away from professional employment to provide full-time care for a family member.</li></ul>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="when"><strong>Sept 2017 – Aug 2020</strong>Dublin, Ireland</div>
+        <div>
+          <h4>Technology Consultant / Junior Developer</h4>
+          <p class="org">Deloitte Ireland LLP</p>
+          <ul>
+            <li>Contributed to a large-scale digital transformation system for a major government client, built with Java and the Spring Framework.</li>
+            <li>Worked across requirements, application development, testing, code release and production support in an Agile environment with cross-functional colleagues.</li>
+            <li>Developed and integrated REST and SOAP web services, and supported end-to-end application functionality and delivery.</li>
+            <li>Wrote and ran unit tests and performed integration and smoke testing to support quality releases.</li>
+            <li>Investigated issues raised through the public help desk, carried out root-cause analysis and implemented bug fixes.</li>
+            <li>Wrote troubleshooting guides that contributed to a 40% reduction in recurring support tickets.</li>
+            <li>Trained and mentored new team members on application functionality and development processes.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="when"><strong>Sept 2016 – Mar 2017</strong>Dublin, Ireland</div>
+        <div>
+          <h4>Academic Demonstrator</h4>
+          <p class="org">University College Dublin</p>
+          <ul>
+            <li>Tutored practical sessions for undergraduate and postgraduate students in programming, relational databases, social networking, graph theory, NLP and Android development.</li>
+            <li>Evaluated assignments and gave students feedback.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="when"><strong>May – Aug 2016</strong>Dublin, Ireland</div>
+        <div>
+          <h4>Politician 360°</h4>
+          <p class="org">Full-stack web application, University College Dublin</p>
+          <ul>
+            <li>Built a web application that analyses and ranks the trustworthiness of Irish politicians using data from tweets, articles and online news sources.</li>
+            <li>Worked across frontend and backend with AngularJS, HTML, CSS, Python, Django, Django REST Framework, PostgreSQL and Redis.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section id="approach">
+      <div class="sec-head"><h3>Delivery</h3></div>
+      <p class="lc-note" style="margin-top:16px">Across both roles I have worked on every stage of the software lifecycle, from the first conversation about requirements to production support.</p>
+      <ol class="lifecycle">
+        <li>Requirements<small>Gathering, AS-IS mapping</small></li>
+        <li>Design<small>Application design, TO-BE</small></li>
+        <li>Build<small>Java, Spring, APIs</small></li>
+        <li>Test<small>Unit, integration, UAT</small></li>
+        <li>Release<small>Build, demo, training</small></li>
+        <li>Support<small>Root cause, guides</small></li>
+      </ol>
+    </section>
+
+    <section id="skills">
+      <div class="sec-head"><h3>Skills</h3></div>
+      <div class="skills">
+        <div>
+          <h4>Business analysis</h4>
+          <ul class="chips">
+            <li>Requirements gathering</li><li>Requirements engineering</li><li>Stakeholder management</li><li>Business process analysis</li><li>Process improvement</li><li>AS-IS / TO-BE mapping</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Delivery and implementation</h4>
+          <ul class="chips">
+            <li>UAT</li><li>Functional testing</li><li>Integration testing</li><li>Release coordination</li><li>Application implementation</li><li>User training</li><li>Change and adoption support</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Project and operations</h4>
+          <ul class="chips">
+            <li>Cross-functional coordination</li><li>Issue tracking</li><li>Troubleshooting</li><li>Operational support</li><li>Recruitment and interviews</li><li>Event and logistics coordination</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Technology</h4>
+          <ul class="chips">
+            <li>Java</li><li>Spring Framework</li><li>REST / SOAP APIs</li><li>SQL</li><li>MySQL</li><li>Oracle</li><li>Python</li><li>JavaScript</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Tools and methods</h4>
+          <ul class="chips">
+            <li>Agile / Scrum</li><li>Jira</li><li>Spira</li><li>Kibana</li><li>Eclipse</li><li>IntelliJ IDEA</li><li>Git</li><li>Jenkins</li><li>Maven</li><li>MS Office</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="sec-head"><h3>Education and certifications</h3></div>
+      <div class="edu">
+        <div>
+          <h4>MSc in Computer Science</h4>
+          <p>University College Dublin, Ireland · 2016</p>
+        </div>
+        <div>
+          <h4>BSc in Computer Science</h4>
+          <p>M.O.P. Vaishnav College for Women, Chennai · 2015</p>
+        </div>
+      </div>
+      <ul class="certs">
+        <li>ISTQB Foundation Level Certification</li>
+        <li>Google IT Automation with Python</li>
+        <li>BCS Foundation Certificate in Business Analysis</li>
+        <li>BCS Certificate in Requirements Engineering</li>
+        <li>BCS Business Analysis Practice Certification</li>
+      </ul>
+    </section>
+
+    <div class="foot">Lakshita · Chennai, India</div>
+  </main>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('themeBtn');
+  function current() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+})();
+</script>
+
+</body></html>
